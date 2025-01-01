@@ -45,61 +45,70 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto">
-        <Card>
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <Card className="backdrop-blur-sm bg-white/90">
           <CardHeader>
-            <CardTitle className="text-3xl font-bold text-center text-gray-900">
+            <CardTitle className="text-4xl font-bold text-center text-gray-900 mb-4">
               Premium Automation Services
             </CardTitle>
-            <CardDescription className="text-center mt-2 text-xl text-gray-600">
-              Transform your business with our comprehensive automation suite
-              <div className="text-2xl font-bold mt-2 text-primary">₹888/month</div>
+            <CardDescription className="text-center space-y-2">
+              <p className="text-xl text-gray-600">
+                Transform your business with our comprehensive automation suite
+              </p>
+              <div className="text-3xl font-bold text-primary mt-4">₹888/month</div>
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="mb-8 space-y-4">
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                <span>Job promotion on WhatsApp and Instagram</span>
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-gray-900">Current Automations</h3>
+                  
+                  <div className="space-y-4">
+                    <div className="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50">
+                      <h4 className="font-semibold text-gray-900">WhatsApp & Instagram Job Promotion</h4>
+                      <p className="text-gray-600 mt-1">Automates job details promotion on WhatsApp and Instagram.</p>
+                    </div>
+                    
+                    <div className="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50">
+                      <h4 className="font-semibold text-gray-900">Facebook Messenger Notifications</h4>
+                      <p className="text-gray-600 mt-1">Sends notifications to Gmail and WhatsApp for new Facebook Messenger messages.</p>
+                    </div>
+                    
+                    <div className="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50">
+                      <h4 className="font-semibold text-gray-900">Contact Management</h4>
+                      <p className="text-gray-600 mt-1">Instant notifications when new contacts are added to your network.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                <span>VIP notifications via Gmail and WhatsApp</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                <span>High-value contact alerts</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                <span>Lead capture and nurturing systems</span>
+
+              <div className="space-y-6">
+                <h3 className="text-xl font-semibold text-gray-900">Get Started Today</h3>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
+                    <Input required type="text" name="name" id="name" placeholder="Your full name" />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                    <Input required type="email" name="email" id="email" placeholder="your@email.com" />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <Input required type="tel" name="phone" id="phone" placeholder="Your phone number" />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message (Optional)</label>
+                    <Textarea name="message" id="message" placeholder="Any specific requirements or questions?" />
+                  </div>
+                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting..." : "Get Started Now"}
+                  </Button>
+                </form>
               </div>
             </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
-                  <Input required type="text" name="name" id="name" placeholder="Your full name" />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-                  <Input required type="email" name="email" id="email" placeholder="your@email.com" />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
-                  <Input required type="tel" name="phone" id="phone" placeholder="Your phone number" />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message (Optional)</label>
-                  <Textarea name="message" id="message" placeholder="Any specific requirements or questions?" />
-                </div>
-              </div>
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Submitting..." : "Get Started Now"}
-              </Button>
-            </form>
           </CardContent>
         </Card>
       </div>
