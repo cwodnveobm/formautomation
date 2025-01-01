@@ -48,6 +48,7 @@ const Index = () => {
           description: "Thank you for your interest. We'll be in touch soon!",
         });
         (document.querySelector('form') as HTMLFormElement)?.reset();
+        window.open('https://razorpay.com/payment-link/plink_PeElxYBNvgMGST', '_blank');
       } else {
         throw new Error("Form submission failed");
       }
@@ -138,8 +139,9 @@ const Index = () => {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Important Information</AlertDialogTitle>
-            <AlertDialogDescription>
-              We will send you the payment link shortly. Please complete the payment, take a screenshot of it, and wait for the next email with further instructions for the automation.
+            <AlertDialogDescription className="space-y-4">
+              <p>We will send you the payment link shortly. Please complete the payment, take a screenshot of it, and wait for the next email with further instructions for the automation.</p>
+              <p className="font-medium">Payment Link: <a href="https://razorpay.com/payment-link/plink_PeElxYBNvgMGST" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Click here to make the payment</a></p>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
