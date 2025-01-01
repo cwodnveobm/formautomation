@@ -5,17 +5,35 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 const Index = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [formData, setFormData] = useState(new FormData());
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const currentFormData = new FormData(e.currentTarget);
+    setFormData(currentFormData);
+    setShowConfirmDialog(true);
+  };
+
+  const handleConfirmedSubmit = async () => {
     setIsSubmitting(true);
+    setShowConfirmDialog(false);
     
     try {
-      const formData = new FormData(e.currentTarget);
       const response = await fetch("https://formspree.io/f/xovvkbea", {
         method: "POST",
         body: formData,
@@ -29,7 +47,7 @@ const Index = () => {
           title: "Success!",
           description: "Thank you for your interest. We'll be in touch soon!",
         });
-        (e.target as HTMLFormElement).reset();
+        (document.querySelector('form') as HTMLFormElement)?.reset();
       } else {
         throw new Error("Form submission failed");
       }
@@ -115,6 +133,21 @@ const Index = () => {
           </CardContent>
         </Card>
       </div>
+
+      <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Important Information</AlertDialogTitle>
+            <AlertDialogDescription>
+              We will send you the payment link shortly. Please complete the payment, take a screenshot of it, and wait for the next email with further instructions for the automation.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleConfirmedSubmit}>Continue</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
