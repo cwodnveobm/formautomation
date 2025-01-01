@@ -38,7 +38,7 @@ const Index = () => {
         method: "POST",
         body: formData,
         headers: {
-          Accept: "application/json",
+          'Accept': 'application/json'
         },
       });
 
