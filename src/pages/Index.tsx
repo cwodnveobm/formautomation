@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 
 const Index = () => {
@@ -39,6 +39,7 @@ const Index = () => {
         description: "There was a problem submitting your form. Please try again.",
         variant: "destructive",
       });
+      console.error("Form submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -52,11 +53,13 @@ const Index = () => {
             <CardTitle className="text-4xl font-bold text-center text-gray-900 mb-4">
               Premium Automation Services
             </CardTitle>
-            <CardDescription className="text-center space-y-2">
-              <p className="text-xl text-gray-600">
-                Transform your business with our comprehensive automation suite
-              </p>
-              <div className="text-3xl font-bold text-primary mt-4">₹888/month</div>
+            <CardDescription className="text-center">
+              <div className="space-y-2">
+                <span className="text-xl text-gray-600 block">
+                  Transform your business with our comprehensive automation suite
+                </span>
+                <span className="text-3xl font-bold text-primary block mt-4">₹888/month</span>
+              </div>
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -68,17 +71,17 @@ const Index = () => {
                   <div className="space-y-4">
                     <div className="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50">
                       <h4 className="font-semibold text-gray-900">WhatsApp & Instagram Job Promotion</h4>
-                      <p className="text-gray-600 mt-1">Automates job details promotion on WhatsApp and Instagram.</p>
+                      <span className="text-gray-600 block mt-1">Automates job details promotion on WhatsApp and Instagram.</span>
                     </div>
                     
                     <div className="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50">
                       <h4 className="font-semibold text-gray-900">Facebook Messenger Notifications</h4>
-                      <p className="text-gray-600 mt-1">Sends notifications to Gmail and WhatsApp for new Facebook Messenger messages.</p>
+                      <span className="text-gray-600 block mt-1">Sends notifications to Gmail and WhatsApp for new Facebook Messenger messages.</span>
                     </div>
                     
                     <div className="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50">
                       <h4 className="font-semibold text-gray-900">Contact Management</h4>
-                      <p className="text-gray-600 mt-1">Instant notifications when new contacts are added to your network.</p>
+                      <span className="text-gray-600 block mt-1">Instant notifications when new contacts are added to your network.</span>
                     </div>
                   </div>
                 </div>
@@ -112,23 +115,6 @@ const Index = () => {
           </CardContent>
         </Card>
       </div>
-
-      {/* Voiceflow Chat Widget Script */}
-      <script type="text/javascript" dangerouslySetInnerHTML={{
-        __html: `
-          (function(d, t) {
-              var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-              v.onload = function() {
-                window.voiceflow.chat.load({
-                  verify: { projectID: '6775582baf88ef4857052f89' },
-                  url: 'https://general-runtime.voiceflow.com',
-                  versionID: 'production'
-                });
-              }
-              v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-          })(document, 'script');
-        `
-      }} />
     </div>
   );
 };
