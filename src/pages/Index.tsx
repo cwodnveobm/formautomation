@@ -48,7 +48,9 @@ const Index = () => {
           description: "Thank you for your interest. We'll be in touch soon!",
         });
         (document.querySelector('form') as HTMLFormElement)?.reset();
-        window.open('https://razorpay.com/payment-link/plink_PeElxYBNvgMGST', '_blank');
+        if (confirm("Please ensure that you have made the payment through your UPI ID or number. Do not scan the QR code")) {
+          window.open('https://razorpay.com/payment-link/plink_PeElxYBNvgMGST', '_blank');
+        }
       } else {
         throw new Error("Form submission failed");
       }
