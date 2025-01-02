@@ -71,67 +71,111 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-indigo-100 py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <Card className="backdrop-blur-sm bg-white/90">
-          <CardHeader>
-            <CardTitle className="text-4xl font-bold text-center text-gray-900 mb-4">
+        <Card className="backdrop-blur-sm bg-white/90 shadow-xl">
+          <CardHeader className="space-y-2 sm:space-y-4">
+            <CardTitle className="text-2xl sm:text-4xl font-bold text-center text-gray-900">
               Premium Automation Services
             </CardTitle>
-            <CardDescription className="text-center">
-              <div className="space-y-2">
-                <span className="text-xl text-gray-600 block">
-                  Transform your business with our comprehensive automation suite
-                </span>
-                <span className="text-3xl font-bold text-primary block mt-4">₹888/month</span>
-              </div>
+            <CardDescription className="text-center space-y-2 sm:space-y-4">
+              <span className="text-lg sm:text-xl text-gray-600 block">
+                Transform your business with our comprehensive automation suite
+              </span>
+              <span className="text-2xl sm:text-3xl font-bold text-primary block mt-2 sm:mt-4">
+                ₹888/month
+              </span>
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
-              <div className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+              <div className="space-y-4 sm:space-y-6">
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-gray-900">Current Automations</h3>
                   
-                  <div className="space-y-4">
-                    <div className="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50">
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="p-3 sm:p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50 hover:shadow-md transition-shadow">
                       <h4 className="font-semibold text-gray-900">WhatsApp & Instagram Job Promotion</h4>
-                      <span className="text-gray-600 block mt-1">Automates job details promotion on WhatsApp and Instagram.</span>
+                      <span className="text-sm sm:text-base text-gray-600 block mt-1">
+                        Automates job details promotion on WhatsApp and Instagram.
+                      </span>
                     </div>
                     
-                    <div className="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50">
+                    <div className="p-3 sm:p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50 hover:shadow-md transition-shadow">
                       <h4 className="font-semibold text-gray-900">Facebook Messenger Notifications</h4>
-                      <span className="text-gray-600 block mt-1">Sends notifications to Gmail and WhatsApp for new Facebook Messenger messages.</span>
+                      <span className="text-sm sm:text-base text-gray-600 block mt-1">
+                        Sends notifications to Gmail and WhatsApp for new Facebook Messenger messages.
+                      </span>
                     </div>
                     
-                    <div className="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50">
+                    <div className="p-3 sm:p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50 hover:shadow-md transition-shadow">
                       <h4 className="font-semibold text-gray-900">Contact Management</h4>
-                      <span className="text-gray-600 block mt-1">Instant notifications when new contacts are added to your network.</span>
+                      <span className="text-sm sm:text-base text-gray-600 block mt-1">
+                        Instant notifications when new contacts are added to your network.
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <h3 className="text-xl font-semibold text-gray-900">Get Started Today</h3>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
-                    <Input required type="text" name="name" id="name" placeholder="Your full name" />
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                      Full Name
+                    </label>
+                    <Input
+                      required
+                      type="text"
+                      name="name"
+                      id="name"
+                      placeholder="Your full name"
+                      className="w-full"
+                    />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-                    <Input required type="email" name="email" id="email" placeholder="your@email.com" />
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                      Email
+                    </label>
+                    <Input
+                      required
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder="your@email.com"
+                      className="w-full"
+                    />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
-                    <Input required type="tel" name="phone" id="phone" placeholder="Your phone number" />
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                      Phone Number
+                    </label>
+                    <Input
+                      required
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      placeholder="Your phone number"
+                      className="w-full"
+                    />
                   </div>
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message (Optional)</label>
-                    <Textarea name="message" id="message" placeholder="Any specific requirements or questions?" />
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                      Message (Optional)
+                    </label>
+                    <Textarea
+                      name="message"
+                      id="message"
+                      placeholder="Any specific requirements or questions?"
+                      className="w-full min-h-[100px]"
+                    />
                   </div>
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  <Button
+                    type="submit"
+                    className="w-full mt-4"
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? "Submitting..." : "Get Started Now"}
                   </Button>
                 </form>
@@ -142,32 +186,46 @@ const Index = () => {
       </div>
 
       <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
-        <AlertDialogContent>
+        <AlertDialogContent className="sm:max-w-[425px]">
           <AlertDialogHeader>
             <AlertDialogTitle>Important Information</AlertDialogTitle>
             <AlertDialogDescription className="space-y-4">
               <p>We will send you the payment link shortly. Please complete the payment, take a screenshot of it, and wait for the next email with further instructions for the automation.</p>
-              <p className="font-medium">Payment Link: <a href="https://razorpay.com/payment-link/plink_PeElxYBNvgMGST" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Click here to make the payment</a></p>
+              <p className="font-medium">
+                Payment Link:{" "}
+                <a
+                  href="https://razorpay.com/payment-link/plink_PeElxYBNvgMGST"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Click here to make the payment
+                </a>
+              </p>
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleConfirmedSubmit}>Continue</AlertDialogAction>
+          <AlertDialogFooter className="sm:flex-row gap-2">
+            <AlertDialogCancel className="sm:w-auto">Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleConfirmedSubmit} className="sm:w-auto">
+              Continue
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
 
       <AlertDialog open={showPaymentDialog} onOpenChange={setShowPaymentDialog}>
-        <AlertDialogContent>
+        <AlertDialogContent className="sm:max-w-[425px]">
           <AlertDialogHeader>
             <AlertDialogTitle>Payment Instructions</AlertDialogTitle>
             <AlertDialogDescription>
               Please ensure that you have made the payment through your UPI ID or number. Do not scan the QR code.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handlePaymentConfirm}>Proceed to Payment</AlertDialogAction>
+          <AlertDialogFooter className="sm:flex-row gap-2">
+            <AlertDialogCancel className="sm:w-auto">Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handlePaymentConfirm} className="sm:w-auto">
+              Proceed to Payment
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
