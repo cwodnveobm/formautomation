@@ -20,6 +20,7 @@ const Index = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [showPaymentDialog, setShowPaymentDialog] = useState(false);
   const [formData, setFormData] = useState(new FormData());
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -48,9 +49,7 @@ const Index = () => {
           description: "Thank you for your interest. We'll be in touch soon!",
         });
         (document.querySelector('form') as HTMLFormElement)?.reset();
-        if (confirm("Please ensure that you have made the payment through your UPI ID or number. Do not scan the QR code")) {
-          window.open('https://razorpay.com/payment-link/plink_PeElxYBNvgMGST', '_blank');
-        }
+        setShowPaymentDialog(true);
       } else {
         throw new Error("Form submission failed");
       }
@@ -64,6 +63,11 @@ const Index = () => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handlePaymentConfirm = () => {
+    window.open('https://razorpay.com/payment-link/plink_PeElxYBNvgMGST', '_blank');
+    setShowPaymentDialog(false);
   };
 
   return (
@@ -149,6 +153,21 @@ const Index = () => {
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction onClick={handleConfirmedSubmit}>Continue</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog open={showPaymentDialog} onOpenChange={setShowPaymentDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Payment Instructions</AlertDialogTitle>
+            <AlertDialogDescription>
+              Please ensure that you have made the payment through your UPI ID or number. Do not scan the QR code.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handlePaymentConfirm}>Proceed to Payment</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
