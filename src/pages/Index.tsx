@@ -1,20 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Form } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+import { AutomationFeatures } from "@/components/AutomationFeatures";
+import { ContactForm } from "@/components/ContactForm";
+import { PaymentDialogs } from "@/components/PaymentDialogs";
 
 const Index = () => {
   const { toast } = useToast();
@@ -71,164 +61,42 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-indigo-100 py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-indigo-100 py-4 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <Card className="backdrop-blur-sm bg-white/90 shadow-xl">
           <CardHeader className="space-y-2 sm:space-y-4">
-            <CardTitle className="text-2xl sm:text-4xl font-bold text-center text-gray-900">
+            <CardTitle className="text-xl sm:text-2xl lg:text-4xl font-bold text-center text-gray-900">
               Premium Automation Services
             </CardTitle>
             <CardDescription className="text-center space-y-2 sm:space-y-4">
-              <span className="text-lg sm:text-xl text-gray-600 block">
+              <span className="text-base sm:text-lg lg:text-xl text-gray-600 block">
                 Transform your business with our comprehensive automation suite
               </span>
-              <span className="text-2xl sm:text-3xl font-bold text-primary block mt-2 sm:mt-4">
+              <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary block mt-2 sm:mt-4">
                 ₹888/month
               </span>
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-              <div className="space-y-4 sm:space-y-6">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-900">Current Automations</h3>
-                  
-                  <div className="space-y-3 sm:space-y-4">
-                    <div className="p-3 sm:p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50 hover:shadow-md transition-shadow">
-                      <h4 className="font-semibold text-gray-900">WhatsApp & Instagram Job Promotion</h4>
-                      <span className="text-sm sm:text-base text-gray-600 block mt-1">
-                        Automates job details promotion on WhatsApp and Instagram.
-                      </span>
-                    </div>
-                    
-                    <div className="p-3 sm:p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50 hover:shadow-md transition-shadow">
-                      <h4 className="font-semibold text-gray-900">Facebook Messenger Notifications</h4>
-                      <span className="text-sm sm:text-base text-gray-600 block mt-1">
-                        Sends notifications to Gmail and WhatsApp for new Facebook Messenger messages.
-                      </span>
-                    </div>
-                    
-                    <div className="p-3 sm:p-4 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50 hover:shadow-md transition-shadow">
-                      <h4 className="font-semibold text-gray-900">Contact Management</h4>
-                      <span className="text-sm sm:text-base text-gray-600 block mt-1">
-                        Instant notifications when new contacts are added to your network.
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-4 sm:space-y-6">
-                <h3 className="text-xl font-semibold text-gray-900">Get Started Today</h3>
-                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                      Full Name
-                    </label>
-                    <Input
-                      required
-                      type="text"
-                      name="name"
-                      id="name"
-                      placeholder="Your full name"
-                      className="w-full"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                      Email
-                    </label>
-                    <Input
-                      required
-                      type="email"
-                      name="email"
-                      id="email"
-                      placeholder="your@email.com"
-                      className="w-full"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                      Phone Number
-                    </label>
-                    <Input
-                      required
-                      type="tel"
-                      name="phone"
-                      id="phone"
-                      placeholder="Your phone number"
-                      className="w-full"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                      Message (Optional)
-                    </label>
-                    <Textarea
-                      name="message"
-                      id="message"
-                      placeholder="Any specific requirements or questions?"
-                      className="w-full min-h-[100px]"
-                    />
-                  </div>
-                  <Button
-                    type="submit"
-                    className="w-full mt-4"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Submitting..." : "Get Started Now"}
-                  </Button>
-                </form>
-              </div>
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+              <AutomationFeatures />
+              <ContactForm 
+                onSubmit={handleSubmit}
+                isSubmitting={isSubmitting}
+              />
             </div>
           </CardContent>
         </Card>
       </div>
 
-      <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
-        <AlertDialogContent className="sm:max-w-[425px]">
-          <AlertDialogHeader>
-            <AlertDialogTitle>Important Information</AlertDialogTitle>
-            <AlertDialogDescription className="space-y-4">
-              <p>We will send you the payment link shortly. Please complete the payment, take a screenshot of it, and wait for the next email with further instructions for the automation.</p>
-              <p className="font-medium">
-                Payment Link:{" "}
-                <a
-                  href="https://razorpay.com/payment-link/plink_PeElxYBNvgMGST"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  Click here to make the payment
-                </a>
-              </p>
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter className="sm:flex-row gap-2">
-            <AlertDialogCancel className="sm:w-auto">Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleConfirmedSubmit} className="sm:w-auto">
-              Continue
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-
-      <AlertDialog open={showPaymentDialog} onOpenChange={setShowPaymentDialog}>
-        <AlertDialogContent className="sm:max-w-[425px]">
-          <AlertDialogHeader>
-            <AlertDialogTitle>Payment Instructions</AlertDialogTitle>
-            <AlertDialogDescription>
-              Please ensure that you have made the payment through your UPI ID or number. Do not scan the QR code.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter className="sm:flex-row gap-2">
-            <AlertDialogCancel className="sm:w-auto">Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handlePaymentConfirm} className="sm:w-auto">
-              Proceed to Payment
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <PaymentDialogs 
+        showConfirmDialog={showConfirmDialog}
+        setShowConfirmDialog={setShowConfirmDialog}
+        showPaymentDialog={showPaymentDialog}
+        setShowPaymentDialog={setShowPaymentDialog}
+        onConfirmedSubmit={handleConfirmedSubmit}
+        onPaymentConfirm={handlePaymentConfirm}
+      />
     </div>
   );
 };
